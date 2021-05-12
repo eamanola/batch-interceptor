@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const WAIT_FOR_REQUESTS_MS = 100;
-const requests = []; // { config, resolve, reject }
+let requests = []; // { config, resolve, reject }
 let batchConfig;
 let timeout = 0;
 
@@ -32,6 +32,8 @@ const sendResponses = ({
       reject(config);
     }
   });
+
+  requests = [];
 };
 
 const batchFetch = () => {
